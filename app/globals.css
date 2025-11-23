@@ -1,5 +1,29 @@
 @import "tailwindcss";
 
+.lightHover:hover {
+  background-color: #fcf4ff;
+}
+
+.darkHover {
+  background-color: #2a004a;
+}
+
+.darkTheme {
+  background-color: #11001f;
+}
+
+.black:hover {
+  box-shadow: 4px 4px 0 #000;
+}
+
+.white {
+  box-shadow: 4px 4px 0 #fff;
+}
+
+.auto {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
 * {
   font-family: var(--font-outfit);
 }

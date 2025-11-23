@@ -16,7 +16,7 @@ const Header = () => {
                 className='text-3xl sm:text-6xl flex text-center lg:text-[66px] font-ovo'>
                 frontend web developer based in Ghana
             </h1>
-            <p>I am a frontend web developer reaching 2 years of experience in web development, working on feature projects like e-commerce web-apps and more</p>
+            <p className='text-center'>I am a frontend web developer with 2 years of experience in web development, working on feature projects like e-commerce web-apps and more</p>
             <div className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
                 <a href="#contact"
                     className='px-10 py-3 border rounded-full border-white bg-black text-white flex items-center gap-2'>
