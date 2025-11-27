@@ -8,7 +8,8 @@ const Work = () => {
             <h4 className='text-center mb-2 text-lg font-ovo'>My portfolio</h4>
             <h2 className='text-center text-5xl font-ovo'>My latest work</h2>
             <p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo'>
-                Welcome to my protfolio, have a look at some of my work showcasing my front-end development skills.
+                Welcome to my protfolio, have a look at some of my work showcasing my front-end
+                development skills.
             </p>
             <div className='grid auto my-10 gap-5'>
                 {workData.map((project, index) => (
@@ -34,7 +35,7 @@ const Work = () => {
             <a href="" className='w-max flex items-center justify-center gap-2
              text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3
              px-10 mx-auto my-20 lightHover duration-300 hover:scale-[1.05]'>
-                Show more <Image src={assets.right_arrow_bold} className='w-4' />
+                Show more <Image alt='' src={assets.right_arrow_bold} className='w-4' />
             </a>
         </div>
     )
