@@ -1,10 +1,10 @@
 import { Outfit, Ovo } from "next/font/google";
 import "./globals.css";
+import { ThemeProvider } from "../context/context.jsx";
 
 const outfit = Outfit({
   subsets: ["latin"],
-  weight: ["400","500", "600", "700"],
-
+  weight: ["400", "500", "600", "700"],
 });
 
 const ovo = Ovo({
@@ -21,9 +21,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden`}
+        className={`${outfit.className} ${ovo.className} antialiased leading-8 
+        overflow-x-hidden`}
       >
-        {children}
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

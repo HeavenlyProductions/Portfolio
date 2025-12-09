@@ -1,10 +1,14 @@
 @import "tailwindcss";
 
+.bg {
+  background-color: #2a004a;
+}
+
 .lightHover:hover {
   background-color: #fcf4ff;
 }
 
-.darkHover {
+.darkHover:hover {
   background-color: #2a004a;
 }
 
@@ -16,7 +20,7 @@
   box-shadow: 4px 4px 0 #000;
 }
 
-.white {
+.white:hover {
   box-shadow: 4px 4px 0 #fff;
 }
 

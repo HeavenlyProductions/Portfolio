@@ -1,8 +1,10 @@
 import { assets } from '@/assets/assets'
+import { useThemeContext } from '@/context/context'
 import Image from 'next/image'
 import React from 'react'
 
 const Header = () => {
+    const { theme } = useThemeContext();
     return (
         <div className='w-11/12 max-w-3xl mx-auto h-screen flex flex-col items-center justify-center gap-4'>
             <div>
@@ -19,11 +21,13 @@ const Header = () => {
             <p className='text-center'>I am a frontend web developer with 2 years of experience in web development, working on feature projects like e-commerce web-apps and more</p>
             <div className='flex flex-col sm:flex-row items-center gap-4 mt-4'>
                 <a href="#contact"
-                    className='px-10 py-3 border rounded-full border-white bg-black text-white flex items-center gap-2'>
+                    className={`px-10 py-3 border rounded-full border-white bg-black 
+                    text-white flex items-center gap-2 ${theme === 'dark' ? 'bg-transparent' : ''}`}>
                     Contact me <Image src={assets.right_arrow} alt='' className='w-4' />
                 </a>
                 <a href="/public/sample-resume.pdf" download
-                    className='px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2'>
+                    className={`px-10 py-3 border rounded-full border-gray-500 flex items-center gap-2
+                    bg-white ${theme === 'dark' ? 'text-black' : ''}`}>
                     My resume <Image src={assets.download_icon} alt='' className='w-4' />
                 </a>
             </div>
