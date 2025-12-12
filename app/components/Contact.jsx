@@ -1,9 +1,12 @@
 'use client'
 import { assets } from '@/assets/assets'
+import { useThemeContext } from '@/context/context'
 import Image from 'next/image'
 import React, { useState } from 'react'
 
 const Contact = () => {
+
+    const { theme } = useThemeContext();
 
     const [result, setResult] = useState("");
 
@@ -31,8 +34,8 @@ const Contact = () => {
     };
 
     return (
-        <div id='contact' className='w-full px-[12%] py-10 scroll-mt-20 bg-[url("/footer-bg-color.png")]
-         bg-no-repeat bg-cover bg-[legnth: 90%_auto]'>
+        <div id='contact' className={`w-full px-[12%] py-10 scroll-mt-20 bg-[url("/footer-bg-color.png")]
+         bg-no-repeat bg-cover bg-[legnth: 90%_auto] ${theme === 'dark' ? 'bg-none' : ''}`}>
             <h4 className='text-center mb-2 text-lg font-ovo'>Connect with me</h4>
             <h2 className='text-center text-5xl font-ovo'>Get in touch</h2>
             <p className='text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo'>
@@ -42,22 +45,27 @@ const Contact = () => {
 
             <form onSubmit={onSubmit} className='max-w-2xl mx-auto'>
                 <div className='grid auto gap-6 mt-10 mb-8'>
+
+
                     <input type="text" placeholder='Enter your name' required
-                        className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 
-                        rounded-md bg-white' name='name' />
+                        className={`flex-1 p-3 outline-none border-[0.5px] border-gray-400 
+                        rounded-md bg-white ${theme === 'dark' ? 'darkBg border-white/90' : ''}`} name='name' />
+
+
                     <input type="email" placeholder='Enter your email' required
-                        className='flex-1 p-3 outline-none border-[0.5px] border-gray-400 
-                        rounded-md bg-white' name='email' />
+                        className={`flex-1 p-3 outline-none border-[0.5px] border-gray-400 
+                        rounded-md bg-white ${theme === 'dark' ? 'darkBg border-white/90' : ''}`} name='email' />
                 </div>
 
                 <textarea rows='6' placeholder='Enter your message' required
-                    className='w-full p-4 outline-none border-[0.5px] border-gray-400 
-                    rounded-md bg-white mb-6' name='message'></textarea>
+                    className={`w-full p-4 outline-none border-[0.5px] border-gray-400 
+                    rounded-md bg-white mb-6 
+                    ${theme === 'dark' ? 'darkBg border-white/90' : ''}`} name='message'></textarea>
 
                 <button type='submit'
-                    className='py-3 px-8 w-max flex items-center justify-between gap-2
+                    className={`py-3 px-8 w-max flex items-center justify-between gap-2
                   bg-black/80 text-white rounded-full mx-auto hover:bg-black 
-                    duration-300'>
+                    duration-300 ${theme === 'dark' ? 'bg-transparent border-[0.5px] darkHover' : ''}`}>
                     Submit now <Image src={assets.right_arrow_white} alt='' className='w-4' />
                 </button>
 
