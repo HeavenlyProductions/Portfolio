@@ -10,11 +10,22 @@ export function ThemeProvider({ children }) {
 
     const [isMounted, setIsMounted] = useState(false);
 
-    useEffect(() => {
-        const storedTheme = localStorage.getItem("theme");
-        const systemPreference = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // context/context.jsx
 
-        if (storedTheme === "dark" || (!storedTheme && systemPreference)) {
+    useEffect(() => {
+
+        const storedTheme = localStorage.getItem("theme");
+
+
+        const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+
+        if (storedTheme === "dark") {
+            setTheme("dark");
+        } else if (storedTheme === "light") {
+            setTheme("light");
+        } else if (systemPrefersDark) {
+
             setTheme("dark");
         } else {
             setTheme("light");
