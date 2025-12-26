@@ -1,56 +1,42 @@
-// context/context.jsx (Updated to prevent Hydration Mismatch)
+// context/context.jsx
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext, useContext } from 'react';
 
-export const ThemeContext = React.createContext();
+export const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-    const [theme, setTheme] = useState('light');
-
+    const [rawTheme, setRawTheme] = useState('light'); 
     const [isMounted, setIsMounted] = useState(false);
 
-    // context/context.jsx
-
     useEffect(() => {
-
         const storedTheme = localStorage.getItem("theme");
-
-
         const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-
-        if (storedTheme === "dark") {
-            setTheme("dark");
-        } else if (storedTheme === "light") {
-            setTheme("light");
-        } else if (systemPrefersDark) {
-
-            setTheme("dark");
+        // 2. Set the actual theme from storage/system
+        if (storedTheme === "dark" || (!storedTheme && systemPrefersDark)) {
+            setRawTheme("dark");
         } else {
-            setTheme("light");
+            setRawTheme("light");
         }
 
+        // 3. Mark as mounted only AFTER we've determined the theme
         setIsMounted(true);
     }, []);
 
     const changeTheme = () => {
-        if (theme === 'light') {
-            setTheme('dark');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            setTheme('light');
-            localStorage.setItem('theme', 'light');
-        }
-    }
+        const newTheme = rawTheme === 'light' ? 'dark' : 'light';
+        setRawTheme(newTheme);
+        localStorage.setItem("theme", newTheme);
+    };
 
-    const contextValue = { theme, setTheme, changeTheme, isMounted };
+    const theme = isMounted ? rawTheme : 'light';
 
     return (
-        <ThemeContext.Provider value={contextValue}>
+        <ThemeContext.Provider value={{ theme, changeTheme, isMounted }}>
             {children}
         </ThemeContext.Provider>
-    )
+    );
 }
 
-export const useThemeContext = () => React.useContext(ThemeContext);
+export const useThemeContext = () => useContext(ThemeContext);

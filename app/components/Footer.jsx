@@ -2,6 +2,7 @@ import { assets } from '@/assets/assets'
 import { useThemeContext } from '@/context/context'
 import Image from 'next/image'
 import React from 'react'
+import { motion } from "motion/react"
 
 const Footer = () => {
 

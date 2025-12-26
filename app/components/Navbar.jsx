@@ -40,7 +40,8 @@ const Navbar = () => {
                 <Image alt='' src={assets.header_bg_color} className='w-full' />
             </div>
             <nav className={`w-full fixed px-5 lg:px-8 xl:px-[8%] py-4 flex justify-between
-             items-center z-50 ${isScroll ? "  bg-transparent backdrop-blur-lg shadow-sm"
+             items-center z-50 transition-colors duration-400 
+             ${isScroll ? "  bg-transparent backdrop-blur-lg shadow-sm"
                     : ""} ${theme === "dark" && !isScroll && isMounted ?
                         "darkTheme shadow-white/20" : ""}`}>
                 <a href="#top">
@@ -59,7 +60,8 @@ const Navbar = () => {
                 <div className='flex items-center gap-4 p-3'>
                     <button onClick={() => changeTheme()}>
                         {isMounted &&
-                            <Image src={theme === 'dark' ? assets.sun_icon : assets.moon_icon}
+                            <Image src={!isMounted ? assets.moon_icon :
+                                (theme === 'dark' ? assets.sun_icon : assets.moon_icon)}
                                 alt='' className='w-6 transition duration-200' />}
                     </button>
                     <a className={`hidden lg:flex items-center gap-3 px-10 py-2.5 border 
@@ -78,10 +80,10 @@ const Navbar = () => {
                  -right-64 top-0 bottom-0 w-64 z-50 h-screen bg-rose-50 transition duration-500
                  ${theme === 'dark' ? 'bg text-white' : ''}`}>
 
-                    <div className='absolute right-6 top-6' onClick={closeMenu}>
+                    <li className='absolute right-6 top-6' onClick={closeMenu}>
                         <Image src={theme === 'dark' ? assets.close_white : assets.close_black}
                             alt='' className='w-5 cursor-pointer' />
-                    </div>
+                    </li>
 
                     <li><a className='font-Ovo' onClick={closeMenu} href="#top">Home</a></li>
                     <li><a className='font-Ovo' onClick={closeMenu} href="#about">About me</a></li>
