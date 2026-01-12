@@ -2,7 +2,6 @@ import { assets } from '@/assets/assets'
 import { useThemeContext } from '@/context/context'
 import Image from 'next/image'
 import React from 'react'
-import { motion } from "motion/react"
 
 const Footer = () => {
 
@@ -12,7 +11,7 @@ const Footer = () => {
         <div className='mt-20'>
 
             <div className='text-center'>
-                <Image src={theme === 'dark' ? assets.logo_dark : assets.logo} alt=''
+                <Image src={theme === 'dark' ? assets.bottom_logo_dark : assets.bottom_logo} alt=''
                     className='w-36 mx-auto mb-2' />
             </div>
 

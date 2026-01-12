@@ -44,9 +44,13 @@ const Navbar = () => {
              ${isScroll ? "  bg-transparent backdrop-blur-lg shadow-sm"
                     : ""} ${theme === "dark" && !isScroll && isMounted ?
                         "darkTheme shadow-white/20" : ""}`}>
-                <a href="#top">
+                <a className={`before:content-[''] before:w-10 before:h-10 before:absolute 
+                ${theme === 'light' ? 'before:bg-[#F9FBF2]' : ''} before:left-[7px] before:top-[5px] 
+                before:rounded-[50%] ${theme === 'dark' ? 'before:left-[130px] before:bg-[#1A1D23]' : ''}
+                before:transition before:duration-200 relative transition duration-300`}
+                    href="#top">
                     <Image src={theme === 'dark' && isMounted ? assets.logo_dark : assets.logo}
-                        alt='image' className='w-28 cursor-pointer mr-14' />
+                        alt='image' className="w-44 cursor-pointer mr-14" />
                 </a>
                 <ul className={`hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3
                  ${isScroll ? "" : (theme === 'light' && isMounted ? "bg-white shadow-sm" : "shadow-sm")} 
